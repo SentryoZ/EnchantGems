@@ -60,8 +60,8 @@ public class EnchantGems extends JavaPlugin implements SlimefunAddon {
     public void createGem(
             Category category,
             Enchantment enchant,
-            String id,
             String name,
+            String id,
             ItemStack material,
             ItemStack tool
     ) {
