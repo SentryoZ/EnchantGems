@@ -5,6 +5,7 @@ import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -55,6 +56,59 @@ public class EnchantGems extends JavaPlugin implements SlimefunAddon {
                 SlimefunItems.FILLED_FLASK_OF_KNOWLEDGE,
                 new ItemStack(Material.BOOK)
         );
+        createGem(category, Enchantment.ARROW_DAMAGE,"Power", "ARROW_DAMAGE",
+                new ItemStack(Material.FLINT),
+                new ItemStack(Material.BOW)
+        );
+        createGem(category, Enchantment.ARROW_FIRE,"Flame", "ARROW_FIRE",
+                SlimefunItems.FIRE_RUNE,
+                new ItemStack(Material.BOW)
+        );
+        createGem(category, Enchantment.ARROW_INFINITE,"Infinity", "ARROW_INFINITE",
+                SlimefunItems.TALISMAN_WHIRLWIND,
+                new ItemStack(Material.BOW)
+        );
+        createGem(category, Enchantment.ARROW_KNOCKBACK,"Punch", "ARROW_KNOCKBACK",
+                SlimefunItems.GRANDPAS_WALKING_STICK,
+                new ItemStack(Material.BOW)
+        );
+        createGem(category, Enchantment.CHANNELING,"Channeling", "CHANNELING",
+                SlimefunItems.LIGHTNING_RUNE,
+                new ItemStack(Material.TRIDENT)
+        );
+        createGem(category, Enchantment.DAMAGE_ARTHROPODS,"Bane of Arthropods", "DAMAGE_ARTHROPODS",
+                new ItemStack(Material.FERMENTED_SPIDER_EYE),
+                new ItemStack(Material.DIAMOND_SWORD)
+        );
+        createGem(category, Enchantment.DAMAGE_UNDEAD,"Smite", "DAMAGE_UNDEAD",
+                SlimefunItems.MONSTER_JERKY,
+                new ItemStack(Material.DIAMOND_SWORD)
+        );
+        createGem(category, Enchantment.DEPTH_STRIDER,"Depth Strider", "DEPTH_STRIDER",
+                SlimefunItems.TALISMAN_WATER,
+                new ItemStack(Material.DIAMOND_BOOTS)
+        );
+        createGem(category, Enchantment.DIG_SPEED,"Efficiency", "DIG_SPEED",
+                SlimefunItems.TALISMAN_MINER,
+                new ItemStack(Material.DIAMOND_PICKAXE)
+        );
+        createGem(category, Enchantment.DURABILITY,"Unbreaking", "DURABILITY",
+                SlimefunItems.REINFORCED_ALLOY_INGOT,
+                new ItemStack(Material.BOOK)
+        );
+        createGem(category, Enchantment.FIRE_ASPECT,"Fire Aspect", "FIRE_ASPECT",
+                SlimefunItems.LAVA_CRYSTAL,
+                new ItemStack(Material.DIAMOND_SWORD)
+        );
+        createGem(category, Enchantment.FROST_WALKER,"Frost Walker", "FROST_WALKER",
+                SlimefunItems.REACTOR_COOLANT_CELL,
+                new ItemStack(Material.DIAMOND_BOOTS)
+        );
+        createGem(category, Enchantment.KNOCKBACK,"Knock back", "KNOCKBACK",
+                SlimefunItems.GRANDPAS_WALKING_STICK,
+                new ItemStack(Material.DIAMOND_SWORD)
+        );
+
     }
 
     public void createGem(
