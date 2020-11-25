@@ -23,9 +23,9 @@ public class EnchantGems extends JavaPlugin implements SlimefunAddon {
         // Read something from your config.yml
         Config cfg = new Config(this);
 
-        if (cfg.getBoolean("options.auto-update")) {
-            new GitHubBuildsUpdater(this, this.getFile(), "SentryoZ/EnchantGems/master").start();
-        }
+//        if (cfg.getBoolean("options.auto-update")) {
+//           new GitHubBuildsUpdater(this, this.getFile(), "SentryoZ/EnchantGems/master").start();
+//        }
 
         // Create Categories
         ItemStack categoryItem =
