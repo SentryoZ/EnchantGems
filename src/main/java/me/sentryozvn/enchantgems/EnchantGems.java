@@ -5,7 +5,6 @@ import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,19 +39,19 @@ public class EnchantGems extends JavaPlugin implements SlimefunAddon {
         NamespacedKey categoryId = new NamespacedKey(this, "enchant_gems");
         Category category = new Category(categoryId, categoryItem);
 
-        createGem(category, Enchantment.SWEEPING_EDGE,"Sweeping Edge",
+        createGem(category, Enchantment.SWEEPING_EDGE,"Sweeping Edge", "SWEEPING_EDGE",
                 new ItemStack(Material.CHAIN),
                 new ItemStack(Material.DIAMOND_SWORD)
         );
-        createGem(category, Enchantment.DAMAGE_ALL,"Sharpness",
+        createGem(category, Enchantment.DAMAGE_ALL,"Sharpness", "DAMAGE_ALL",
                 new ItemStack(Material.FLINT),
                 new ItemStack(Material.DIAMOND_SWORD)
         );
-        createGem(category, Enchantment.SILK_TOUCH,"Silk Touch",
+        createGem(category, Enchantment.SILK_TOUCH,"Silk Touch", "SILK_TOUCH",
                 new ItemStack(Material.SLIME_BLOCK),
                 new ItemStack(Material.DIAMOND_PICKAXE)
         );
-        createGem(category, Enchantment.MENDING,"Mending",
+        createGem(category, Enchantment.MENDING,"Mending", "MENDING",
                 SlimefunItems.FILLED_FLASK_OF_KNOWLEDGE,
                 new ItemStack(Material.BOOK)
         );
@@ -61,13 +60,14 @@ public class EnchantGems extends JavaPlugin implements SlimefunAddon {
     public void createGem(
             Category category,
             Enchantment enchant,
+            String id,
             String name,
             ItemStack material,
             ItemStack tool
     ) {
         SlimefunItemStack slimefunItem =
                 new SlimefunItemStack(
-                        enchant + "_ENCHANT_GEM",
+                        id + "_ENCHANT_GEM",
                         Material.PRISMARINE_CRYSTALS,
                         "&b" + name + " Enchant Gem",
                         "",
