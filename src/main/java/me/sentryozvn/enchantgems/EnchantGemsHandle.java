@@ -44,29 +44,32 @@ public class EnchantGemsHandle extends SlimefunItem {
             for (String line : im.getLore()) {
                 if (line.startsWith(ChatColor.GRAY + "Type: ")) {
                     enc = line.replace(ChatColor.GRAY + "Enchant: ", "").replace(" ", "_").toUpperCase();
-                    break;
                 }
                 if (line.startsWith(ChatColor.GRAY + "Max level: ")) {
                     encMaxLevel = getEncMaxLevel(line);
-                    break;
                 }
             }
         }
 
-        if (enc != null && encMaxLevel != null) {
-            ItemStack giveItem = new ItemStack(Material.ENCHANTED_BOOK);
-            int encLv = ThreadLocalRandom.current().nextInt(1, encMaxLevel + 1);
-            Enchantment enchantment = EnchantmentWrapper.getByKey(NamespacedKey.minecraft(enc));
+        if (enc != null) {
+            if (encMaxLevel != null) {
+                ItemStack giveItem = new ItemStack(Material.ENCHANTED_BOOK);
+                int encLv = ThreadLocalRandom.current().nextInt(1, encMaxLevel + 1);
+                Enchantment enchantment = EnchantmentWrapper.getByKey(NamespacedKey.minecraft(enc));
+                if (enchantment != null){
+                    giveItem.addUnsafeEnchantment(enchantment, encLv);
+                }
 
-            giveItem.addUnsafeEnchantment(enchantment, encLv);
+                Inventory inventory = player.getInventory();
+                inventory.addItem(giveItem);
 
-            Inventory inventory = player.getInventory();
-            inventory.addItem(giveItem);
-
-            player.playSound(player.getEyeLocation(), Sound.BLOCK_BEACON_ACTIVATE, 1, 1);
-            ItemUtils.consumeItem(event.getItem(), false);
-        }else{
-            player.sendMessage(ChatColor.GREEN + "Something went wrong");
+                player.playSound(player.getEyeLocation(), Sound.BLOCK_BEACON_ACTIVATE, 1, 1);
+                ItemUtils.consumeItem(event.getItem(), false);
+            } else {
+                player.sendMessage(ChatColor.GREEN + "Something went wrong");
+                player.sendMessage(ChatColor.GREEN + "Enchant " + enc + ".");
+                player.sendMessage(ChatColor.GREEN + "Max level" + encMaxLevel + ".");
+            }
         }
     }
 
