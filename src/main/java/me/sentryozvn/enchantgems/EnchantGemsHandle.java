@@ -37,47 +37,45 @@ public class EnchantGemsHandle extends SlimefunItem {
         Player player = event.getPlayer();
         ItemMeta im = event.getItem().getItemMeta();
         assert im != null;
-        String enc = null;
-        Integer encMaxLevel = null;
+        String enc = "Unbreaking";
+        Integer encMaxLevel = 1;
 
         if (im.hasLore()) {
             for (String line : im.getLore()) {
-                if (line.startsWith(ChatColor.GRAY + "Type: ")) {
-                    enc = line.replace(ChatColor.GRAY + "Enchant: ", "").replace(" ", "_").toUpperCase();
+                if (line.startsWith(ChatColor.GRAY + "Enchant: ")) {
+                    enc = line
+                            .replace(ChatColor.GRAY + "Enchant: ", "")
+                            .replace(" ", "_")
+                            .toLowerCase();
                 }
                 if (line.startsWith(ChatColor.GRAY + "Max level: ")) {
-                    encMaxLevel = getEncMaxLevel(line);
+                    try {
+                        encMaxLevel = Integer.parseInt(line.replace(ChatColor.GRAY + "Max level: : ", ""));
+                    } catch (NumberFormatException e) {
+                        encMaxLevel = 1;
+
+                    }
                 }
             }
         }
 
-        if (enc != null) {
-            if (encMaxLevel != null) {
-                ItemStack giveItem = new ItemStack(Material.ENCHANTED_BOOK);
-                int encLv = ThreadLocalRandom.current().nextInt(1, encMaxLevel + 1);
-                Enchantment enchantment = EnchantmentWrapper.getByKey(NamespacedKey.minecraft(enc));
-                if (enchantment != null){
-                    giveItem.addUnsafeEnchantment(enchantment, encLv);
-                }
+        ItemStack giveItem = new ItemStack(Material.ENCHANTED_BOOK);
+        int encLv = ThreadLocalRandom.current().nextInt(1, encMaxLevel + 1);
 
-                Inventory inventory = player.getInventory();
-                inventory.addItem(giveItem);
+        Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(enc));
 
-                player.playSound(player.getEyeLocation(), Sound.BLOCK_BEACON_ACTIVATE, 1, 1);
-                ItemUtils.consumeItem(event.getItem(), false);
-            } else {
-                player.sendMessage(ChatColor.GREEN + "Something went wrong");
-                player.sendMessage(ChatColor.GREEN + "Enchant " + enc + ".");
-                player.sendMessage(ChatColor.GREEN + "Max level" + encMaxLevel + ".");
-            }
+        if (enchantment != null) {
+            giveItem.addUnsafeEnchantment(enchantment, encLv);
+            Inventory inventory = player.getInventory();
+            inventory.addItem(giveItem);
+        } else {
+            player.sendMessage(ChatColor.RED + "----------------------------");
+            player.sendMessage(ChatColor.RED + "Something went wrong");
+            player.sendMessage(ChatColor.GOLD + "Enchant: " + enc);
+            player.sendMessage(ChatColor.RED + "Level: " + encLv + "/" + encMaxLevel);
         }
-    }
 
-    private Integer getEncMaxLevel(String line) {
-        try {
-            return Integer.parseInt(line.replace(ChatColor.GRAY + "Max level: : ", ""));
-        } catch (NumberFormatException e) {
-            return 1;
-        }
+        player.playSound(player.getEyeLocation(), Sound.BLOCK_BEACON_ACTIVATE, 1, 1);
+        ItemUtils.consumeItem(event.getItem(), false);
     }
 }
