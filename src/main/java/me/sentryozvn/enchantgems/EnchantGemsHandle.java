@@ -12,12 +12,12 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class EnchantGemsHandle extends SlimefunItem {
@@ -38,10 +38,10 @@ public class EnchantGemsHandle extends SlimefunItem {
         ItemMeta im = event.getItem().getItemMeta();
         assert im != null;
         String enc = "Unbreaking";
-        Integer encMaxLevel = 1;
+        int encMaxLevel = 1;
 
         if (im.hasLore()) {
-            for (String line : im.getLore()) {
+            for (String line : Objects.requireNonNull(im.getLore())) {
                 if (line.startsWith(ChatColor.GRAY + "Enchant: ")) {
                     enc = line
                             .replace(ChatColor.GRAY + "Enchant: ", "")
@@ -50,7 +50,7 @@ public class EnchantGemsHandle extends SlimefunItem {
                 }
                 if (line.startsWith(ChatColor.GRAY + "Max level: ")) {
                     try {
-                        encMaxLevel = Integer.parseInt(line.replace(ChatColor.GRAY + "Max level: : ", ""));
+                        encMaxLevel = Integer.parseInt(line.replace(ChatColor.GRAY + "Max level: ", ""));
                     } catch (NumberFormatException e) {
                         encMaxLevel = 1;
 

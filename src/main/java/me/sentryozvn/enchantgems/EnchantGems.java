@@ -41,71 +41,71 @@ public class EnchantGems extends JavaPlugin implements SlimefunAddon {
         NamespacedKey categoryId = new NamespacedKey(this, "enchant_gems");
         Category category = new Category(categoryId, categoryItem);
 
-        createGem(category, "Sweeping", 5,
+        createGem(category, "Sweeping", cfg.getInt("max-enchant-levels.sweeping"),
                 new ItemStack(Material.CHAIN),
                 new ItemStack(Material.DIAMOND_SWORD)
         );
-        createGem(category, "Sharpness", 5,
+        createGem(category, "Sharpness", cfg.getInt("max-enchant-levels.sharpness"),
                 new ItemStack(Material.FLINT),
                 new ItemStack(Material.DIAMOND_SWORD)
         );
-        createGem(category, "Silk Touch", 1,
+        createGem(category, "Silk Touch", cfg.getInt("max-enchant-levels.silk_touch"),
                 new ItemStack(Material.SLIME_BLOCK),
                 new ItemStack(Material.DIAMOND_PICKAXE)
         );
-        createGem(category, "Mending", 1,
+        createGem(category, "Mending", cfg.getInt("max-enchant-levels.mending"),
                 SlimefunItems.FILLED_FLASK_OF_KNOWLEDGE,
                 new ItemStack(Material.BOOK)
         );
-        createGem(category, "Punch", 5,
+        createGem(category, "Power", cfg.getInt("max-enchant-levels.power"),
                 new ItemStack(Material.FLINT),
                 new ItemStack(Material.BOW)
         );
-        createGem(category, "Flame", 1,
+        createGem(category, "Flame", cfg.getInt("max-enchant-levels.flame"),
                 SlimefunItems.FIRE_RUNE,
                 new ItemStack(Material.BOW)
         );
-        createGem(category, "Infinity", 1,
+        createGem(category, "Infinity", cfg.getInt("max-enchant-levels.infinity"),
                 SlimefunItems.TALISMAN_WHIRLWIND,
                 new ItemStack(Material.BOW)
         );
-        createGem(category, "Knockback", 5,
+        createGem(category, "Punch", cfg.getInt("max-enchant-levels.punch"),
                 SlimefunItems.GRANDPAS_WALKING_STICK,
                 new ItemStack(Material.BOW)
         );
-        createGem(category, "Channeling", 5,
+        createGem(category, "Channeling", cfg.getInt("max-enchant-levels.channeling"),
                 SlimefunItems.LIGHTNING_RUNE,
                 new ItemStack(Material.TRIDENT)
         );
-        createGem(category, "Bane Of Arthropods", 5,
+        createGem(category, "Bane Of Arthropods", cfg.getInt("max-enchant-levels.bane_of_arthropods"),
                 new ItemStack(Material.FERMENTED_SPIDER_EYE),
                 new ItemStack(Material.DIAMOND_SWORD)
         );
-        createGem(category, "Smite", 5,
+        createGem(category, "Smite", cfg.getInt("max-enchant-levels.smite"),
                 SlimefunItems.MONSTER_JERKY,
                 new ItemStack(Material.DIAMOND_SWORD)
         );
-        createGem(category, "Depth Strider", 5,
+        createGem(category, "Depth Strider", cfg.getInt("max-enchant-levels.depth_strider"),
                 SlimefunItems.TALISMAN_WATER,
                 new ItemStack(Material.DIAMOND_BOOTS)
         );
-        createGem(category, "Efficiency", 5,
+        createGem(category, "Efficiency", cfg.getInt("max-enchant-levels.efficiency"),
                 SlimefunItems.TALISMAN_MINER,
                 new ItemStack(Material.DIAMOND_PICKAXE)
         );
-        createGem(category, "Unbreaking", 5,
+        createGem(category, "Unbreaking", cfg.getInt("max-enchant-levels.unbreaking"),
                 SlimefunItems.REINFORCED_ALLOY_INGOT,
                 new ItemStack(Material.BOOK)
         );
-        createGem(category, "Fire Aspect", 5,
+        createGem(category, "Fire Aspect", cfg.getInt("max-enchant-levels.fire_aspect"),
                 SlimefunItems.LAVA_CRYSTAL,
                 new ItemStack(Material.DIAMOND_SWORD)
         );
-        createGem(category, "Frost Walker", 1,
+        createGem(category, "Frost Walker", cfg.getInt("max-enchant-levels.frost_walker"),
                 SlimefunItems.REACTOR_COOLANT_CELL,
                 new ItemStack(Material.DIAMOND_BOOTS)
         );
-        createGem(category, "Knockback", 5,
+        createGem(category, "Knockback", cfg.getInt("max-enchant-levels.knockback"),
                 SlimefunItems.GRANDPAS_WALKING_STICK,
                 new ItemStack(Material.DIAMOND_SWORD)
         );
