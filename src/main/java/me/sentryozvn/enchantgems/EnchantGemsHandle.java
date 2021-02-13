@@ -15,6 +15,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Objects;
@@ -59,15 +60,16 @@ public class EnchantGemsHandle extends SlimefunItem {
             }
         }
 
-        ItemStack giveItem = new ItemStack(Material.ENCHANTED_BOOK);
+        ItemStack book = new ItemStack(Material.BOOK);
         int encLv = ThreadLocalRandom.current().nextInt(1, encMaxLevel + 1);
 
         Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(enc));
 
         if (enchantment != null) {
-            giveItem.addUnsafeEnchantment(enchantment, encLv);
+            EnchantmentStorageMeta storageEnchant = (EnchantmentStorageMeta) enchantment;
+            book.setItemMeta(storageEnchant);
             Inventory inventory = player.getInventory();
-            inventory.addItem(giveItem);
+            inventory.addItem(book);
         } else {
             player.sendMessage(ChatColor.RED + "----------------------------");
             player.sendMessage(ChatColor.RED + "Something went wrong");
