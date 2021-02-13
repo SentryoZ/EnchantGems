@@ -66,8 +66,10 @@ public class EnchantGemsHandle extends SlimefunItem {
         Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(enc));
 
         if (enchantment != null) {
-            EnchantmentStorageMeta storageEnchant = (EnchantmentStorageMeta) enchantment;
+            EnchantmentStorageMeta storageEnchant = (EnchantmentStorageMeta) book.getItemMeta();
+            storageEnchant.addStoredEnchant(enchantment, encLv, true);
             book.setItemMeta(storageEnchant);
+
             Inventory inventory = player.getInventory();
             inventory.addItem(book);
         } else {
